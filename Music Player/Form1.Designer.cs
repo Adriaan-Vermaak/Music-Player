@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_load = new System.Windows.Forms.Button();
             this.btn_play = new System.Windows.Forms.Button();
             this.btn_pause = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.lbl_CurrentSong = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.timerProgress = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarVolume)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +71,7 @@
             this.btn_pause.TabIndex = 2;
             this.btn_pause.Text = "Pause";
             this.btn_pause.UseVisualStyleBackColor = true;
+            this.btn_pause.Click += new System.EventHandler(this.btn_pause_Click);
             // 
             // btn_stop
             // 
@@ -78,6 +81,7 @@
             this.btn_stop.TabIndex = 3;
             this.btn_stop.Text = "Stop";
             this.btn_stop.UseVisualStyleBackColor = true;
+            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
             // 
             // btn_resume
             // 
@@ -87,6 +91,7 @@
             this.btn_resume.TabIndex = 4;
             this.btn_resume.Text = "Resume";
             this.btn_resume.UseVisualStyleBackColor = true;
+            this.btn_resume.Click += new System.EventHandler(this.btn_resume_Click);
             // 
             // TrackBarVolume
             // 
@@ -96,6 +101,7 @@
             this.TrackBarVolume.Size = new System.Drawing.Size(196, 45);
             this.TrackBarVolume.TabIndex = 5;
             this.TrackBarVolume.Value = 50;
+            this.TrackBarVolume.Scroll += new System.EventHandler(this.TrackBarVolume_Scroll);
             // 
             // ListBoxSongs
             // 
@@ -117,7 +123,7 @@
             // lbl_CurrentSong
             // 
             this.lbl_CurrentSong.AutoSize = true;
-            this.lbl_CurrentSong.Location = new System.Drawing.Point(248, 182);
+            this.lbl_CurrentSong.Location = new System.Drawing.Point(236, 182);
             this.lbl_CurrentSong.Name = "lbl_CurrentSong";
             this.lbl_CurrentSong.Size = new System.Drawing.Size(69, 13);
             this.lbl_CurrentSong.TabIndex = 8;
@@ -129,6 +135,11 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(232, 23);
             this.progressBar.TabIndex = 9;
+            this.progressBar.Click += new System.EventHandler(this.progressBar_Click);
+            // 
+            // timerProgress
+            // 
+            this.timerProgress.Interval = 1000;
             // 
             // MusicPlayer
             // 
@@ -166,6 +177,7 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lbl_CurrentSong;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Timer timerProgress;
     }
 }
 

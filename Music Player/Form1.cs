@@ -89,9 +89,14 @@ namespace Music_Player
         {
             if (outputDevice != null)
             {
-                outputDevice.Stop();
+                if (outputDevice.PlaybackState == PlaybackState.Playing || outputDevice.PlaybackState == PlaybackState.Paused)
+                {
+                    outputDevice.Stop(); // stop playback but keep time
+                }
+
                 outputDevice.Dispose();
                 outputDevice = null;
+                
             }
 
             if (audioFile != null)
@@ -99,6 +104,43 @@ namespace Music_Player
                 audioFile.Dispose();
                 audioFile = null;
             }
+        }
+
+        private void btn_pause_Click(object sender, EventArgs e)
+        {
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                outputDevice.Pause();
+            }
+        }
+
+        private void btn_resume_Click(object sender, EventArgs e)
+        {
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Paused)
+            {
+                outputDevice.Play();
+            }
+        }
+
+        private void btn_stop_Click(object sender, EventArgs e)
+        {
+            StopPlayback();
+            selectedFile = null; // only reset if full stop is needed
+        }
+
+        private void TrackBarVolume_Scroll(object sender, EventArgs e)
+        {
+            if (outputDevice != null)
+            {
+                float volume = TrackBarVolume.Value / 100f; // convert to range 0.0 - 1.0
+                outputDevice.Volume = volume;
+            }
+                
+        }
+
+        private void progressBar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
