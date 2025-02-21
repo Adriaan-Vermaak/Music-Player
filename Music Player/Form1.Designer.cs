@@ -136,10 +136,12 @@
             this.progressBar.Size = new System.Drawing.Size(232, 23);
             this.progressBar.TabIndex = 9;
             this.progressBar.Click += new System.EventHandler(this.progressBar_Click);
+            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
             // 
             // timerProgress
             // 
             this.timerProgress.Interval = 1000;
+            this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
             // MusicPlayer
             // 

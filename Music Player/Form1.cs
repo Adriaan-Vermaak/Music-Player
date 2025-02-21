@@ -76,6 +76,11 @@ namespace Music_Player
                 outputDevice.Play();
 
                 lbl_CurrentSong.Text = "Now Playing: " + Path.GetFileName(selectedFile);
+
+                // progress bar
+                progressBar.Maximum = (int)audioFile.TotalTime.TotalSeconds;
+                progressBar.Value = 0;
+                timerProgress.Start();
             }
             catch (Exception ex)
             {
@@ -104,6 +109,9 @@ namespace Music_Player
                 audioFile.Dispose();
                 audioFile = null;
             }
+
+            timerProgress.Stop();
+            progressBar.Value = 0;
         }
 
         private void btn_pause_Click(object sender, EventArgs e)
@@ -140,7 +148,30 @@ namespace Music_Player
 
         private void progressBar_Click(object sender, EventArgs e)
         {
+           
 
+        }
+
+        private void timerProgress_Tick(object sender, EventArgs e)
+        {
+            if (audioFile != null && outputDevice != null)
+            {
+                progressBar.Value = (int)audioFile.CurrentTime.TotalSeconds;
+            }
+        }
+
+        private void progressBar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (audioFile != null)
+            {
+                // Calculate new position based on where the user clicked
+                double percentage = (double)e.X / progressBar.Width;
+                int newPosition = (int)(percentage * audioFile.TotalTime.TotalSeconds);
+
+                // Seek to the new position
+                audioFile.CurrentTime = TimeSpan.FromSeconds(newPosition);
+                progressBar.Value = newPosition;
+            }
         }
     }
 }
