@@ -114,6 +114,31 @@ namespace Music_Player
             progressBar.Value = 0;
         }
 
+        private void PlaySelectedSong()
+        {
+            StopPlayback();
+
+            try
+            {
+                audioFile = new AudioFileReader(selectedFile);
+                outputDevice = new WaveOutEvent();
+                outputDevice.Init(audioFile);
+                outputDevice.Play();
+
+                lbl_CurrentSong.Text = "Now Playing: " + Path.GetDirectoryName(selectedFile);
+
+                // reset nad start progressbar
+                progressBar.Maximum = (int)audioFile.TotalTime.TotalSeconds;
+                progressBar.Value = 0;
+                timerProgress.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error playing file!");
+
+            }
+        }
+
         private void btn_pause_Click(object sender, EventArgs e)
         {
             if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
@@ -173,5 +198,36 @@ namespace Music_Player
                 progressBar.Value = newPosition;
             }
         }
+
+        private void btn_skip_Click(object sender, EventArgs e)
+        {
+            if (musicFiles == null || musicFiles.Length == 0)
+            {
+                MessageBox.Show("No songs loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int currentIndex = Array.IndexOf(musicFiles, selectedFile);
+
+            if (currentIndex >= 0 && currentIndex < musicFiles.Length - 1)
+            {
+                selectedFile = musicFiles[currentIndex + 1];
+            }
+            else
+            {
+                selectedFile = musicFiles[0];
+            }
+
+            int newIndex = Array.IndexOf(musicFiles, selectedFile);
+            if (newIndex >= 0)
+            {
+                ListBoxSongs.SelectedIndex = newIndex;
+            }
+
+            PlaySelectedSong();
+            
+        }
+
+       
     }
 }

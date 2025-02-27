@@ -40,12 +40,13 @@
             this.lbl_CurrentSong = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
+            this.btn_skip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_load
             // 
-            this.btn_load.Location = new System.Drawing.Point(12, 264);
+            this.btn_load.Location = new System.Drawing.Point(436, 220);
             this.btn_load.Name = "btn_load";
             this.btn_load.Size = new System.Drawing.Size(85, 23);
             this.btn_load.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             // btn_play
             // 
-            this.btn_play.Location = new System.Drawing.Point(125, 264);
+            this.btn_play.Location = new System.Drawing.Point(12, 264);
             this.btn_play.Name = "btn_play";
             this.btn_play.Size = new System.Drawing.Size(87, 23);
             this.btn_play.TabIndex = 1;
@@ -65,7 +66,7 @@
             // 
             // btn_pause
             // 
-            this.btn_pause.Location = new System.Drawing.Point(251, 264);
+            this.btn_pause.Location = new System.Drawing.Point(115, 264);
             this.btn_pause.Name = "btn_pause";
             this.btn_pause.Size = new System.Drawing.Size(84, 23);
             this.btn_pause.TabIndex = 2;
@@ -75,7 +76,7 @@
             // 
             // btn_stop
             // 
-            this.btn_stop.Location = new System.Drawing.Point(380, 264);
+            this.btn_stop.Location = new System.Drawing.Point(436, 264);
             this.btn_stop.Name = "btn_stop";
             this.btn_stop.Size = new System.Drawing.Size(78, 23);
             this.btn_stop.TabIndex = 3;
@@ -85,7 +86,7 @@
             // 
             // btn_resume
             // 
-            this.btn_resume.Location = new System.Drawing.Point(494, 264);
+            this.btn_resume.Location = new System.Drawing.Point(211, 264);
             this.btn_resume.Name = "btn_resume";
             this.btn_resume.Size = new System.Drawing.Size(94, 23);
             this.btn_resume.TabIndex = 4;
@@ -143,11 +144,22 @@
             this.timerProgress.Interval = 1000;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
+            // btn_skip
+            // 
+            this.btn_skip.Location = new System.Drawing.Point(325, 264);
+            this.btn_skip.Name = "btn_skip";
+            this.btn_skip.Size = new System.Drawing.Size(94, 24);
+            this.btn_skip.TabIndex = 10;
+            this.btn_skip.Text = "Skip";
+            this.btn_skip.UseVisualStyleBackColor = true;
+            this.btn_skip.Click += new System.EventHandler(this.btn_skip_Click);
+            // 
             // MusicPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 367);
+            this.Controls.Add(this.btn_skip);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lbl_CurrentSong);
             this.Controls.Add(this.lblTime);
@@ -180,6 +192,7 @@
         private System.Windows.Forms.Label lbl_CurrentSong;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer timerProgress;
+        private System.Windows.Forms.Button btn_skip;
     }
 }
 
