@@ -116,7 +116,7 @@
             // lbl_CurrentTime
             // 
             this.lbl_CurrentTime.AutoSize = true;
-            this.lbl_CurrentTime.Location = new System.Drawing.Point(12, 158);
+            this.lbl_CurrentTime.Location = new System.Drawing.Point(70, 158);
             this.lbl_CurrentTime.Name = "lbl_CurrentTime";
             this.lbl_CurrentTime.Size = new System.Drawing.Size(0, 13);
             this.lbl_CurrentTime.TabIndex = 7;
@@ -157,7 +157,7 @@
             // lbl_totalTime
             // 
             this.lbl_totalTime.AutoSize = true;
-            this.lbl_totalTime.Location = new System.Drawing.Point(184, 158);
+            this.lbl_totalTime.Location = new System.Drawing.Point(222, 158);
             this.lbl_totalTime.Name = "lbl_totalTime";
             this.lbl_totalTime.Size = new System.Drawing.Size(0, 13);
             this.lbl_totalTime.TabIndex = 11;
