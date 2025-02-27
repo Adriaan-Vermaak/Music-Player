@@ -36,17 +36,18 @@
             this.btn_resume = new System.Windows.Forms.Button();
             this.TrackBarVolume = new System.Windows.Forms.TrackBar();
             this.ListBoxSongs = new System.Windows.Forms.ListBox();
-            this.lblTime = new System.Windows.Forms.Label();
+            this.lbl_CurrentTime = new System.Windows.Forms.Label();
             this.lbl_CurrentSong = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
             this.btn_skip = new System.Windows.Forms.Button();
+            this.lbl_totalTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_load
             // 
-            this.btn_load.Location = new System.Drawing.Point(436, 220);
+            this.btn_load.Location = new System.Drawing.Point(443, 219);
             this.btn_load.Name = "btn_load";
             this.btn_load.Size = new System.Drawing.Size(85, 23);
             this.btn_load.TabIndex = 0;
@@ -76,9 +77,9 @@
             // 
             // btn_stop
             // 
-            this.btn_stop.Location = new System.Drawing.Point(436, 264);
+            this.btn_stop.Location = new System.Drawing.Point(443, 264);
             this.btn_stop.Name = "btn_stop";
-            this.btn_stop.Size = new System.Drawing.Size(78, 23);
+            this.btn_stop.Size = new System.Drawing.Size(85, 23);
             this.btn_stop.TabIndex = 3;
             this.btn_stop.Text = "Stop";
             this.btn_stop.UseVisualStyleBackColor = true;
@@ -112,19 +113,18 @@
             this.ListBoxSongs.Size = new System.Drawing.Size(441, 56);
             this.ListBoxSongs.TabIndex = 6;
             // 
-            // lblTime
+            // lbl_CurrentTime
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(112, 182);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(30, 13);
-            this.lblTime.TabIndex = 7;
-            this.lblTime.Text = "Time";
+            this.lbl_CurrentTime.AutoSize = true;
+            this.lbl_CurrentTime.Location = new System.Drawing.Point(12, 158);
+            this.lbl_CurrentTime.Name = "lbl_CurrentTime";
+            this.lbl_CurrentTime.Size = new System.Drawing.Size(0, 13);
+            this.lbl_CurrentTime.TabIndex = 7;
             // 
             // lbl_CurrentSong
             // 
             this.lbl_CurrentSong.AutoSize = true;
-            this.lbl_CurrentSong.Location = new System.Drawing.Point(236, 182);
+            this.lbl_CurrentSong.Location = new System.Drawing.Point(304, 167);
             this.lbl_CurrentSong.Name = "lbl_CurrentSong";
             this.lbl_CurrentSong.Size = new System.Drawing.Size(69, 13);
             this.lbl_CurrentSong.TabIndex = 8;
@@ -154,15 +154,24 @@
             this.btn_skip.UseVisualStyleBackColor = true;
             this.btn_skip.Click += new System.EventHandler(this.btn_skip_Click);
             // 
+            // lbl_totalTime
+            // 
+            this.lbl_totalTime.AutoSize = true;
+            this.lbl_totalTime.Location = new System.Drawing.Point(184, 158);
+            this.lbl_totalTime.Name = "lbl_totalTime";
+            this.lbl_totalTime.Size = new System.Drawing.Size(0, 13);
+            this.lbl_totalTime.TabIndex = 11;
+            // 
             // MusicPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 367);
+            this.Controls.Add(this.lbl_totalTime);
             this.Controls.Add(this.btn_skip);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lbl_CurrentSong);
-            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.lbl_CurrentTime);
             this.Controls.Add(this.ListBoxSongs);
             this.Controls.Add(this.TrackBarVolume);
             this.Controls.Add(this.btn_resume);
@@ -188,11 +197,12 @@
         private System.Windows.Forms.Button btn_resume;
         private System.Windows.Forms.TrackBar TrackBarVolume;
         private System.Windows.Forms.ListBox ListBoxSongs;
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lbl_CurrentTime;
         private System.Windows.Forms.Label lbl_CurrentSong;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer timerProgress;
         private System.Windows.Forms.Button btn_skip;
+        private System.Windows.Forms.Label lbl_totalTime;
     }
 }
 

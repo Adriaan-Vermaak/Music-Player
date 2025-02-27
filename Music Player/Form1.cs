@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,9 @@ namespace Music_Player
         public MusicPlayer()
         {
             InitializeComponent();
+
+            timerProgress.Interval = 1000; 
+            timerProgress.Tick += timerProgress_Tick;
 
 
         }
@@ -112,6 +116,7 @@ namespace Music_Player
 
             timerProgress.Stop();
             progressBar.Value = 0;
+            lbl_CurrentTime.Text = "00.00";
         }
 
         private void PlaySelectedSong()
@@ -127,9 +132,14 @@ namespace Music_Player
 
                 lbl_CurrentSong.Text = "Now Playing: " + Path.GetDirectoryName(selectedFile);
 
-                // reset nad start progressbar
+                // reset and start progressbar
                 progressBar.Maximum = (int)audioFile.TotalTime.TotalSeconds;
                 progressBar.Value = 0;
+                timerProgress.Start();
+
+                lbl_totalTime.Text = audioFile.TotalTime.ToString(@"mm\:ss");
+
+                lbl_CurrentTime.Text = "00.00";
                 timerProgress.Start();
             }
             catch (Exception ex)
@@ -137,6 +147,8 @@ namespace Music_Player
                 MessageBox.Show("Error playing file!");
 
             }
+
+            
         }
 
         private void btn_pause_Click(object sender, EventArgs e)
@@ -182,6 +194,14 @@ namespace Music_Player
             if (audioFile != null && outputDevice != null)
             {
                 progressBar.Value = (int)audioFile.CurrentTime.TotalSeconds;
+                TimeSpan currentTime = audioFile.CurrentTime;
+                lbl_CurrentTime.Text = currentTime.ToString(@"mm\:ss");
+
+                if (currentTime >= audioFile.TotalTime)
+                {
+                    timerProgress.Stop();
+                    lbl_CurrentTime.Text = "00.00";
+                }
             }
         }
 
